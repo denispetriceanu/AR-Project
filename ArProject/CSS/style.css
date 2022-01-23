@@ -1,0 +1,76 @@
+:root {
+    --space-cadet: #25283dff;
+    --maya-blue: #7cc6feff;
+    --cinereous: #886f68ff;
+    --maize-crayola: #e8c547ff;
+    --maximum-yellow-red: #ffc857ff;
+}
+
+
+.buttons-test {
+    z-index: 1;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.box {
+    position: relative;
+    background-color: var(--space-cadet);
+    border-radius: 5px;
+    display: grid;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+p {
+    margin-top: 5px;
+    margin-bottom: 1px;
+    margin-left: 10px;
+    font-weight: 900;
+    color: var(--maximum-yellow-red);
+}
+
+h6 {
+    color: var(--maximum-yellow-red);
+    font-weight: 900;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.controlShow {
+    position: absolute;
+    right: 6px;
+    top: 5px;
+}
+
+.btn-light {
+    margin: 0px;
+    margin-left: -4px;
+    margin-top: -25px;
+}
+
+.btn {
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+.autorotate {
+    background-color: var(--cinereous);
+    width: 90%;
+    padding: 0px;
+    text-align: center;
+    margin: auto
+}
+
+#speedSetter {
+    width: 50px;
+    border-radius: 15px;
+    border: none;
+    color: #20578c;
+    font-weight: 900;
+    padding-left: 5px;
+}

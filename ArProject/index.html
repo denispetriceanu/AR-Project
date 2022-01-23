@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js">
+    </script>
+
+    <!-- JS -->
+    <script src="JS/slideshow.js"></script>
+    <script src="JS/javascript.js"></script>
+
+    <!-- Aframe link: https://aframe.io/docs/1.2.0/introduction/ -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/switch_button.css">
+    <link rel="stylesheet" href="CSS/slideshow.css">
+</head>
+
+<body>
+    <!-- list with images -->
+    <div class="buttons-test" id="slideshowBox">
+        <div class="row">
+            <div class="column">
+                <img class="demo cursor" src="IMG/schita_frame.png" style="width:100%"
+                    onclick="newImage3D('mirror_frame.glb')" alt="The Woods">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="IMG/moonSchita.png" style="width:100%" onclick="newImage3D('moon.glb')"
+                    alt="Cinque Terre">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="IMG/schita_table.png" style="width:100%"
+                    onclick="newImage3D('table_and_seat.glb')" alt="Mountains and fjords">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="IMG/schita_gants.png" style="width:100%" onclick="newImage3D('gants.glb')"
+                    alt="Mountains and fjords">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="IMG/schita_chair.png" style="width:100%" onclick="newImage3D('chair.glb')"
+                    alt="Mountains and fjords">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="IMG/frigider.png" style="width:100%" onclick="newImage3D('frigider.glb')"
+                    alt="Mountains and fjords">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- options to navigate -->
+    <div class="buttons-test">
+        <!-- Home button -->
+        <button class="btn btn-warning a-enter-back-button" onclick="window.location='../index.html'">
+            <img src=" IMG/home_icon.png" alt="Home" width="20px">
+        </button>
+
+        <!-- Control Panel -->
+        <div class="box">
+            <!-- buttons to hide and show panel -->
+            <img id="closePanel" class="controlShow" src="IMG/arrow-left.png" alt="<" width="25px"
+                onclick="hidePanel()">
+            <button id="openPanel" class="btn btn-light a-enter-back-button" onclick="showPanel()"
+                style="display: none;"><img src="IMG/arrow-right.png" alt=">" width="25px"></button>
+
+            <!-- Options in control panel -->
+            <div id="controlPanel">
+                <h6>Settings</h6>
+
+                <p>X</p>
+                <input id="xCoordinate" type="range" min="-100" max="100" step="1" value="1"
+                    onchange="changeRotation('xCoordinate', this.value)" ondblclick="changeRotation('xCoordinate', 0)">
+
+                <p>Y</p>
+                <input id="yCoordinate" type="range" min="-100" max="100" step="1" value="1"
+                    onchange="changeRotation('yCoordinate', this.value)" ondblclick="changeRotation('xCoordinate', 0);">
+
+                <p>Size</p>
+                <input id="zCoordinate" type="range" min="-3" max="-1" step="0.001" value="-2"
+                    onchange="changeRotation('zCoordinate', this.value)" ondblclick="changeRotation('xCoordinate', 0)">
+
+                <p>Auto rotate</p>
+                <div style="display: flex; justify-content: space-between;">
+                    <label class="switch">
+                        <input type="checkbox" onclick="switchAutoRotation(); rotateX(1);">
+                        <span class="slider round"></span>
+                    </label>
+                    <input type="number" id="speedSetter" min="1" max="10" value="2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Box to load and library -->
+    <div id="objectToLoad">
+        <a-scene>
+            <a-assets>
+                <a-asset-item id="imgToShow" src="IMG/3D_images/moon.glb" width="500px" height="500px">
+                </a-asset-item>
+            </a-assets>
+            <a-image gltf-model="#imgToShow" position="0 1.5 -2" scale="1.5 1.5 1.5" rotation="0 70 0" width="1"
+                height="5">
+            </a-image>
+            <!-- <a-camera>
+                <a-cursor></a-cursor>
+            </a-camera> -->
+            <!-- 
+            rotation: x - y - z
+                - Pitch, rotation about the X-axis.
+                - Yaw, rotation about the Y-axis.
+                - Roll, rotation about the Z-axis.
+            position: x - y - z 
+                - Negative X axis extends left. Positive X Axis extends right.
+                - Negative Y axis extends down. Positive Y Axis extends up.
+                - Negative Z axis extends in. Positive Z Axis extends out.
+            -->
+        </a-scene>
+    </div>
+
+    <script>
+        hidePanel();
+    </script>
+</body>
+
+</html>
